@@ -6,7 +6,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
+
+import static android.R.attr.name;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,32 +21,39 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void  submitOrder(View view){
-        CheckBox checkBox1=(CheckBox)findViewById(R.id.whippedcreamcheckbox);
-        final boolean hasWhippedCream=checkBox1.isChecked();
-        CheckBox checkBox2=(CheckBox)findViewById(R.id.checkboxcheckbox);
-        final boolean hasChocolate=checkBox2.isChecked();
-        Log.v("MainActivity","has Whipped Cream"+hasWhippedCream);
-        int price= calculationPrice();
-        String priceMessage=createOrderSummary(price,hasWhippedCream,hasChocolate);
+    public void submitOrder(View view) {
+        CheckBox checkBox1 = (CheckBox) findViewById(R.id.whippedcreamcheckbox);
+        final boolean hasWhippedCream = checkBox1.isChecked();
+        Log.v("MainActivity", "has Whipped Cream" + hasWhippedCream);
+
+        CheckBox checkBox2 = (CheckBox) findViewById(R.id.checkboxcheckbox);
+        final boolean hasChocolate = checkBox2.isChecked();
+        Log.v("MainActivity", "has Whipped Cream" + hasChocolate);
+
+        EditText editText=(EditText)findViewById(R.id.name_field);
+        String name=editText.getText().toString();
+        Log.v("MainActivity","Customer name"+name);
+        int price = calculationPrice();
+        String priceMessage = createOrderSummary(price, hasWhippedCream, hasChocolate,name);
         displayMessage(priceMessage);
     }
 
     public void displayMessage(String price) {
-        TextView tv=(TextView)findViewById(R.id.textView3);
+        TextView tv = (TextView) findViewById(R.id.textView3);
         tv.setText(price);
 
     }
+
     /**
      * Create summary of the order.
      *
      * @param addWhippedCream is whether or not the user wants whipped cream topping
-     * @param addChocolate is whether or not the user wants whipped cream topping
-     * @param price of the order
+     * @param addChocolate    is whether or not the user wants whipped cream topping
+     * @param price           of the order
      * @return text summary
      */
-    public String createOrderSummary(int price, boolean addWhippedCream,boolean addChocolate) {
-        String priceMessage = " Name:Lyla the Labyrinth";
+    public String createOrderSummary(int price, boolean addWhippedCream, boolean addChocolate,String name) {
+        String priceMessage = " Name:"+name;
         priceMessage += "\n Add Whipped cream?" + addWhippedCream;
         priceMessage += "\n Add Whipped cream?" + addChocolate;
         priceMessage += "\n Quantity:" + quantity;
