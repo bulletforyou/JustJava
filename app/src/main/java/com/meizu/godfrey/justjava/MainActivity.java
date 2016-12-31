@@ -1,6 +1,8 @@
 package com.meizu.godfrey.justjava;
 
 
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -40,6 +42,14 @@ public class MainActivity extends AppCompatActivity {
         Log.v("MainActivity", "Customer name" + name);
         int price = calculationPrice(hasChocolate,hasChocolate);
         String priceMessage = createOrderSummary(price, hasWhippedCream, hasChocolate, name);
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("*/*");
+//        intent.putExtra(Intent.EXTRA_EMAIL, addresses);
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Just Java");
+//        intent.putExtra(Intent.EXTRA_STREAM, attachment);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
         displayMessage(priceMessage);
     }
 
@@ -102,6 +112,9 @@ public class MainActivity extends AppCompatActivity {
         tv.setMaxLines(10);
         tv.setText(String.valueOf(quantity));
     }
+
+
+
 
 
 
