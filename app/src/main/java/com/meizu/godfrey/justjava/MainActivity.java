@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
     public String createOrderSummary(int price, boolean addWhippedCream) {
         String priceMessage = " Name:Lyla the Labyrinth";
-        priceMessage += "\n Add Whipped cream:" + addWhippedCream;
+        priceMessage += "\n Add Whipped cream?" + addWhippedCream;
         priceMessage += "\n Quantity:" + quantity;
         priceMessage += "\n Total:" + calculationPrice();
         priceMessage += "\n Thank you";
