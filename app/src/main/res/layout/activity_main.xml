@@ -14,56 +14,93 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TOPPING !"
-        android:id="@+id/textView"
+        android:text="TOPPING"
+        android:id="@+id/textView1"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
     <CheckBox
+        android:id="@+id/checkbox1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/checkbox_whipped_cream"
+        android:layout_margin="2dp"
+        android:layout_below="@id/textView1"
         android:text="Whipped cream"
-        android:layout_marginTop="10dp"
-        android:layout_below="@+id/textView"
-  />
+        android:textAppearance="?android:textAppearanceMedium" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="QUANTITY"
+        android:id="@+id/textView2"
+        android:layout_below="@id/checkbox1" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:id="@+id/button1"
+        android:layout_below="@id/textView2"
         android:text="+"
-        android:layout_below="@+id/checkbox_whipped_cream"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/textView"
-        android:layout_alignEnd="@+id/textView"
-        android:onClick="increment"/>
+        android:id="@+id/Button1"
+        android:onClick="increment"
+        />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="41dp"
-        android:id="@+id/button2"
+        android:id="@+id/Button2"
         android:text="-"
-        android:layout_toRightOf="@+id/button1"
-        android:layout_marginStart="100dp"
-        android:layout_alignBottom="@+id/button1"
+        android:layout_alignTop="@+id/Button1"
+        android:layout_toRightOf="@+id/Button1"
+        android:layout_toEndOf="@+id/Button1"
+        android:layout_marginLeft="61dp"
+        android:layout_marginStart="61dp"
         android:onClick="decrement"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="0"
-        android:textSize="30dp"
-        android:id="@+id/textView2"
-        android:layout_alignTop="@+id/button1"
-        android:layout_alignRight="@+id/checkbox_whipped_cream"
-        android:layout_alignEnd="@+id/checkbox_whipped_cream"
-        android:layout_marginRight="15dp"
-        android:layout_marginEnd="15dp" />
+        android:text="0"
+        android:textSize="25dp"
+        android:layout_alignBaseline="@+id/Button2"
+        android:layout_alignBottom="@+id/Button2"
+        android:layout_toRightOf="@+id/Button1"
+        android:layout_toEndOf="@+id/Button1"
+        android:layout_marginLeft="25dp"
+        android:layout_marginStart="25dp"
+        android:id="@+id/textView" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
 
+        android:layout_below="@+id/Button1"
+        android:layout_alignLeft="@+id/checkbox1"
+        android:layout_alignStart="@+id/checkbox1"
+        android:layout_marginTop="30dp"
+        android:id="@+id/textView3"
+        android:layout_toLeftOf="@+id/Button2"
+        android:layout_toStartOf="@+id/Button2"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Order"
+        android:layout_marginTop="99dp"
+        android:layout_below="@+id/textView3"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/button2"
+        android:onClick="submitOrder"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ORDER SUMMARY"
+        android:id="@+id/textView4"
+        android:layout_below="@+id/Button1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp" />
 </RelativeLayout>

@@ -10,7 +10,8 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    int quantity=0;
+    int quantity = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,41 +19,47 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void  submitOrder(View view){
-        CheckBox checkBox=(CheckBox)findViewById(R.id.checkbox_whipped_cream);
-        boolean hasWhippedCream=checkBox.isChecked();
+        CheckBox checkBox=(CheckBox)findViewById(R.id.checkbox1);
+        final boolean hasWhippedCream=checkBox.isChecked();
         Log.v("MainActivity","has Whipped Cream"+hasWhippedCream);
         int price= calculationPrice();
         String priceMessage=createOrderSummary(price,hasWhippedCream);
         displayMessage(priceMessage);
     }
 
-    private void displayMessage(String price) {
+    public void displayMessage(String price) {
+        TextView tv=(TextView)findViewById(R.id.textView3);
+        tv.setText(price);
+
     }
 
-    private String createOrderSummary(int price,boolean addWhippedCream){
-            String priceMessage="Name:Lyla the Labyrinth";
-            priceMessage+="\n Add Whipped cream:"+addWhippedCream;
-            priceMessage+="\n Quantity:"+quantity;
-            priceMessage+="\n Total:"+quantity;
-            priceMessage+="\n Thank you:"+quantity;
+    public String createOrderSummary(int price, boolean addWhippedCream) {
+        String priceMessage = "Name:Lyla the Labyrinth";
+        priceMessage += "\n Add Whipped cream:" + addWhippedCream;
+        priceMessage += "\n Quantity:" + quantity;
+        priceMessage += "\n Total:" + calculationPrice();
+        priceMessage += "\n Thank you:";
         return priceMessage;
 
     }
 
-    private int calculationPrice(){
-            return quantity*5;
+    public int calculationPrice() {
+        return quantity * 5;
     }
 
-    private void decrement(){
-        quantity-=1;
+    public void decrement(View view) {
+        quantity -= 1;
         displayQuantity(quantity);
     }
-    private void increment(){
-        quantity+=1;
+
+    public void increment(View view) {
+        quantity += 1;
         displayQuantity(quantity);
     }
-    private void displayQuantity(View view){
-        TextView tv=(TextView)findViewById(R.id.textView2);
+
+    public void displayQuantity(int quantity) {
+        TextView tv = (TextView) findViewById(R.id.textView);
+        tv.setMaxLines(10);
         tv.setText(String.valueOf(quantity));
     }
 }
