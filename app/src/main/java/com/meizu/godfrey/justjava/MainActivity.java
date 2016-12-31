@@ -1,6 +1,6 @@
 package com.meizu.godfrey.justjava;
 
-import android.icu.util.IslamicCalendar;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,8 +8,11 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
 
 import static android.R.attr.name;
+import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
     }
 
     public void submitOrder(View view) {
@@ -30,11 +35,11 @@ public class MainActivity extends AppCompatActivity {
         final boolean hasChocolate = checkBox2.isChecked();
         Log.v("MainActivity", "has Whipped Cream" + hasChocolate);
 
-        EditText editText=(EditText)findViewById(R.id.name_field);
-        String name=editText.getText().toString();
-        Log.v("MainActivity","Customer name"+name);
-        int price = calculationPrice();
-        String priceMessage = createOrderSummary(price, hasWhippedCream, hasChocolate,name);
+        EditText editText = (EditText) findViewById(R.id.name_field);
+        String name = editText.getText().toString();
+        Log.v("MainActivity", "Customer name" + name);
+        int price = calculationPrice(hasChocolate,hasChocolate);
+        String priceMessage = createOrderSummary(price, hasWhippedCream, hasChocolate, name);
         displayMessage(priceMessage);
     }
 
@@ -52,27 +57,42 @@ public class MainActivity extends AppCompatActivity {
      * @param price           of the order
      * @return text summary
      */
-    public String createOrderSummary(int price, boolean addWhippedCream, boolean addChocolate,String name) {
-        String priceMessage = " Name:"+name;
+    public String createOrderSummary(int price, boolean addWhippedCream, boolean addChocolate, String name) {
+        String priceMessage = " Name:" + name;
         priceMessage += "\n Add Whipped cream?" + addWhippedCream;
         priceMessage += "\n Add Whipped cream?" + addChocolate;
         priceMessage += "\n Quantity:" + quantity;
-        priceMessage += "\n Total:" + calculationPrice();
+        priceMessage += "\n Total:" + calculationPrice(addWhippedCream, addChocolate);
         priceMessage += "\n Thank you";
         return priceMessage;
 
     }
 
-    public int calculationPrice() {
-        return quantity * 5;
+    public int calculationPrice(boolean addWhippedCream, boolean addChocolate) {
+        int baseprice = 5;
+        if (addWhippedCream) {
+            baseprice += 1;
+        }
+        if (addChocolate) {
+            baseprice += 2;
+        }
+        return baseprice * quantity;
     }
 
     public void decrement(View view) {
+        if(quantity<=1){
+            Toast.makeText(this,"不能小于1",Toast.LENGTH_SHORT).show();
+            return;
+        }
         quantity -= 1;
         displayQuantity(quantity);
     }
 
     public void increment(View view) {
+        if (quantity>=100){
+            Toast.makeText(this,"不能大于100",Toast.LENGTH_SHORT).show();
+            return;
+        }
         quantity += 1;
         displayQuantity(quantity);
     }
@@ -82,4 +102,7 @@ public class MainActivity extends AppCompatActivity {
         tv.setMaxLines(10);
         tv.setText(String.valueOf(quantity));
     }
+
+
+
 }
