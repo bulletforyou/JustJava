@@ -45,7 +45,8 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("*/*");
 //        intent.putExtra(Intent.EXTRA_EMAIL, addresses);
-        intent.putExtra(Intent.EXTRA_SUBJECT, "Just Java");
+        intent.putExtra(Intent.EXTRA_SUBJECT, name);
+        intent.putExtra(intent.EXTRA_TEXT,priceMessage);
 //        intent.putExtra(Intent.EXTRA_STREAM, attachment);
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
