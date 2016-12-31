@@ -25,7 +25,7 @@
             android:layout_alignParentStart="true" />
 
         <CheckBox
-            android:id="@+id/checkbox1"
+            android:id="@+id/whippedcreamcheckbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
@@ -33,12 +33,24 @@
             android:text="Whipped cream"
             android:textAppearance="?android:textAppearanceMedium" />
 
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkboxcheckbox"
+            android:layout_margin="2dp"
+            android:layout_below="@id/whippedcreamcheckbox"
+            android:text="Chocolate"
+            android:textAppearance="?android:textAppearanceMedium"
+            />
+
+
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="QUANTITY"
             android:id="@+id/textView2"
-            android:layout_below="@id/checkbox1" />
+            android:layout_below="@id/checkboxcheckbox" />
 
         <Button
             android:layout_width="wrap_content"
@@ -79,8 +91,8 @@
             android:layout_height="wrap_content"
 
             android:layout_below="@+id/Button1"
-            android:layout_alignLeft="@+id/checkbox1"
-            android:layout_alignStart="@+id/checkbox1"
+            android:layout_alignLeft="@+id/whippedcreamcheckbox"
+            android:layout_alignStart="@+id/checkboxcheckbox"
             android:layout_marginTop="30dp"
             android:id="@+id/textView3"
             android:layout_toStartOf="@+id/Button2"
