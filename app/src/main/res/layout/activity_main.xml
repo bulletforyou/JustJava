@@ -22,17 +22,19 @@
             android:hint="Name"
             android:inputType="text"
             android:layout_marginTop="8dp"
+
             />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TOPPING"
+            android:text="@string/topping"
             android:id="@+id/textView1"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_marginTop="55dp"/>
+            android:layout_marginTop="55dp"
+            style="@style/HeadTextStyle"/>
 
         <CheckBox
             android:id="@+id/whippedcreamcheckbox"
@@ -58,9 +60,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="QUANTITY"
+            android:text="quantity"
             android:id="@+id/textView2"
-            android:layout_below="@id/checkboxcheckbox" />
+            android:layout_below="@id/checkboxcheckbox"
+            style="@style/HeadTextStyle"/>
 
         <Button
             android:layout_width="wrap_content"
@@ -96,40 +99,40 @@
             android:layout_marginStart="25dp"
             android:id="@+id/textView" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
 
-            android:layout_below="@+id/Button1"
-            android:layout_alignLeft="@+id/whippedcreamcheckbox"
-            android:layout_alignStart="@+id/checkboxcheckbox"
-            android:layout_marginTop="30dp"
-            android:id="@+id/textView3"
-            android:layout_toStartOf="@+id/Button2"
-            android:layout_toLeftOf="@+id/Button2"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            <!--android:layout_below="@+id/Button1"-->
+            <!--android:layout_alignLeft="@+id/whippedcreamcheckbox"-->
+            <!--android:layout_alignStart="@+id/checkboxcheckbox"-->
+            <!--android:layout_marginTop="30dp"-->
+            <!--android:id="@+id/textView3"-->
+            <!--android:layout_toStartOf="@+id/Button2"-->
+            <!--android:layout_toLeftOf="@+id/Button2"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:layout_alignParentEnd="true" />-->
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Order"
-            android:layout_marginTop="99dp"
-            android:layout_below="@+id/textView3"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
+            android:layout_marginTop="36dp"
             android:id="@+id/button2"
-            android:onClick="submitOrder"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ORDER SUMMARY"
-            android:id="@+id/textView4"
+            android:onClick="submitOrder"
             android:layout_below="@+id/Button1"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="10dp" />
+            android:layout_alignParentStart="true" />
+
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="ORDER SUMMARY"-->
+            <!--android:id="@+id/textView4"-->
+            <!--android:layout_below="@+id/Button1"-->
+            <!--android:layout_alignParentLeft="true"-->
+            <!--android:layout_alignParentStart="true"-->
+            <!--android:layout_marginTop="10dp" />-->
 
 
 

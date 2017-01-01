@@ -40,25 +40,24 @@ public class MainActivity extends AppCompatActivity {
         EditText editText = (EditText) findViewById(R.id.name_field);
         String name = editText.getText().toString();
         Log.v("MainActivity", "Customer name" + name);
-        int price = calculationPrice(hasChocolate,hasChocolate);
+        int price = calculationPrice(hasChocolate, hasChocolate);
         String priceMessage = createOrderSummary(price, hasWhippedCream, hasChocolate, name);
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("*/*");
 //        intent.putExtra(Intent.EXTRA_EMAIL, addresses);
         intent.putExtra(Intent.EXTRA_SUBJECT, name);
-        intent.putExtra(intent.EXTRA_TEXT,priceMessage);
+        intent.putExtra(intent.EXTRA_TEXT, priceMessage);
 //        intent.putExtra(Intent.EXTRA_STREAM, attachment);
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
         }
-        displayMessage(priceMessage);
+//        displayMessage(priceMessage);
     }
 
-    public void displayMessage(String price) {
-        TextView tv = (TextView) findViewById(R.id.textView3);
-        tv.setText(price);
-
-    }
+//    public void displayMessage(String price) {
+//        TextView tv = (TextView) findViewById(R.id.textView3);
+//        tv.setText(price);
+//    }
 
     /**
      * Create summary of the order.
@@ -74,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         priceMessage += "\n Add Whipped cream?" + addChocolate;
         priceMessage += "\n Quantity:" + quantity;
         priceMessage += "\n Total:" + calculationPrice(addWhippedCream, addChocolate);
-        priceMessage += "\n Thank you";
+        priceMessage += "\n Thank you" + getString(R.string.app_name);
         return priceMessage;
 
     }
@@ -91,8 +90,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void decrement(View view) {
-        if(quantity<=1){
-            Toast.makeText(this,"不能小于1",Toast.LENGTH_SHORT).show();
+        if (quantity <= 1) {
+            Toast.makeText(this, "不能小于1", Toast.LENGTH_SHORT).show();
             return;
         }
         quantity -= 1;
@@ -100,8 +99,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void increment(View view) {
-        if (quantity>=100){
-            Toast.makeText(this,"不能大于100",Toast.LENGTH_SHORT).show();
+        if (quantity >= 100) {
+            Toast.makeText(this, "不能大于100", Toast.LENGTH_SHORT).show();
             return;
         }
         quantity += 1;
@@ -113,10 +112,6 @@ public class MainActivity extends AppCompatActivity {
         tv.setMaxLines(10);
         tv.setText(String.valueOf(quantity));
     }
-
-
-
-
 
 
 }
